@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="hospitals">
+    <h2>长沙医院列表</h2>
+        {% for hospital_info in cate_data_alls %}
+            <div class="hospital">
+                <img src="{{ url_for('static',filename=hospital_info[2]) }}" height="180" width="280"/>
+                <p>医院名称：{{ hospital_info[1] }}</p>
+                <p>联系电话：{{ hospital_info[3] }}</p>
+                <p>医院地址：{{ hospital_info[4] }}</p>
+                <div class="intro">医院简介</div>
+                <div class="intro_content"><em style="color: red;font-size: 15px;">简介：</em>{{ hospital_info[5] }}</div>
+            </div>
+        {% endfor %}
+        <div class="page">
+            <a style="margin-left: 450px" href="{{ url_for('hospital',page=1)}}">首页</a>
+            <a style="margin: 0px 10px" href="{{ url_for('hospital',page=prev)}}">上一页</a>
+            {{ page }}
+            <a style="margin-left: 10px" href="{{ url_for('hospital',page=next)}}">下一页</a>
+            <a style="margin: 0px 10px" href="{{ url_for('hospital',page=pages)}}">末页</a>
+            总页数:{{ pages }}
+        </div>
+    </div>
+{% endblock %}

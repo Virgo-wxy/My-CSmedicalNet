@@ -1,0 +1,30 @@
+{% extends "manage/manage_base.html" %}
+{% block js %}
+	<script>
+		$(function () {
+			$(".navbar>ul>li:eq(3)").addClass("current");
+		});
+	</script>
+{% endblock %}
+{% block content %}
+    <h5> >>> 留言回复</h5>
+    <table class="del_list">
+        <tr>
+            <th>ID</th>
+            <th>留言内容</th>
+        </tr>
+        {% for guestbook in guestbook_infos %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ guestbook[2] }}</td>
+                <td>
+                    <form action="/manage/add_guestbook_answer/">
+                        <input type="text" size="12px" name="answer">
+                        <input type="text" size="12px" value="{{ guestbook[2] }}" name="question" style="display: none">
+                        <input class="resp" type="submit" name="submit" value="回复" />
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

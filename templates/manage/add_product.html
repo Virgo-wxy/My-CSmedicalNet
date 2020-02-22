@@ -1,0 +1,31 @@
+{% extends "manage/manage_base.html" %}
+{% block js %}
+	<script>
+		$(function () {
+			$(".navbar>ul>li:eq(2)").addClass("current");
+		});
+	</script>
+{% endblock %}
+{% block content %}
+    <h5> >>> 新增产品</h5>
+    <form class="manage_form"  action="/manage/add_product_info/">
+        <ul>
+            <li>
+                <label>产品名称:</label>
+                <input type="text" name="productName" />
+            </li>
+            <li>
+                <label>产品图片:</label>
+                <input type="file" name="photo" />
+            </li>
+            <li>
+                <label>产品功能:</label>
+                <textarea rows="9" cols="38" name="work"></textarea>
+            </li>
+            <li class="reg_sub">
+                <br />
+                <input class="add" type="submit" value="添 加" name="mysubmit">
+            </li>
+        </ul>
+    </form>
+{% endblock %}

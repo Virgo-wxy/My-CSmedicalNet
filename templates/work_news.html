@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="newscontent">
+        <h1>{{ news_title }}</h1>
+        <h4>作者：管理员 &nbsp;&nbsp; 发布于：<span>{{ news_time }}</span></h4>
+        <span>摘要：</span>
+        <div class="contents">
+            {{ news_content }}
+        </div>
+        <div class="return">
+            <a href="{{ url_for('news',page=Cpage) }}">返回上一页</a>
+        </div>
+    </div>
+{% endblock %}

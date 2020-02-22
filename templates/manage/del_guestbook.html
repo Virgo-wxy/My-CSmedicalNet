@@ -1,0 +1,34 @@
+{% extends "manage/manage_base.html" %}
+{% block js %}
+	<script>
+		$(function () {
+			$(".navbar>ul>li:eq(3)").addClass("current");
+		});
+	</script>
+{% endblock %}
+{% block content %}
+    <h5> >>> 删除留言</h5>
+    <table class="del_list">
+        <div class="page" style="position: absolute;top: 508px;">
+            <a style="margin-left: 180px" href="{{ url_for('manage_guestbook_show',page=1) }}">首页</a>
+            <a style="margin: 0px 10px" href="{{ url_for('manage_guestbook_show',page=prev) }}">上一页</a>
+            {{ page }}
+            <a style="margin-left: 10px" href="{{ url_for('manage_guestbook_show',page=next) }}">下一页</a>
+            <a style="margin: 0px 10px" href="{{ url_for('manage_guestbook_show',page=pages) }}">末页</a>
+            总页数:{{ pages }}
+        </div>
+        <tr>
+            <th>ID</th>
+            <th>用户名</th>
+            <th>留言内容</th>
+        </tr>
+        {% for guestbook in alls %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ guestbook[1] }}</td>
+                <td>{{ guestbook[2] }}</td>
+                <td><a class="del" href="{{ url_for('manage_del_guestbook',Cpage=page,guestbook_name=guestbook[1],guestbook_question=guestbook[2]) }}">删除</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

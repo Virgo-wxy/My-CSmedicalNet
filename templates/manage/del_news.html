@@ -1,0 +1,35 @@
+{% extends "manage/manage_base.html" %}
+{% block js %}
+	<script>
+		$(function () {
+			$(".navbar>ul>li:eq(4)").addClass("current");
+		});
+	</script>
+{% endblock %}
+{% block content %}
+    <h5> >>> 删除快讯</h5>
+    <table class="del_list">
+        <div class="page" style="position: absolute;top: 508px;">
+            <a style="margin-left: 180px" href="{{ url_for('manage_work_news',page=1) }}">首页</a>
+            <a style="margin: 0px 10px" href="{{ url_for('manage_work_news',page=prev) }}">上一页</a>
+            {{ page }}
+            <a style="margin-left: 10px" href="{{ url_for('manage_work_news',page=next) }}">下一页</a>
+            <a style="margin: 0px 10px" href="{{ url_for('manage_work_news',page=pages) }}">末页</a>
+            总页数:{{ pages }}
+        </div>
+        <tr>
+            <th>ID</th>
+            <th>快讯标题</th>
+        </tr>
+        {% for news in alls %}
+        {% if loop.index < 16 %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ news[1] }}</td>
+                <td><a href="{{ url_for('update_news_info',news_title=news[1],news_content=news[2]) }}">修改</a></td>
+                <td><a class="del" href="{{ url_for('del_news',Cpage=page,news_title=news[1]) }}">删除</a></td>
+            </tr>
+        {% endif%}
+        {% endfor %}
+    </table>
+{% endblock %}

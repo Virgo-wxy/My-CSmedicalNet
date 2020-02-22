@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="product">
+    <div class="product_top clearfix">
+        <h3 class="name">产品系列展示</h3>
+        <div class="location">
+            <a href="{{ url_for('index') }}">首页</a>&nbsp;&gt;&nbsp;<span>产品展示</span>
+        </div>
+    </div>
+    <div class="product_content">
+        <div class="bd">
+            <div class="probox">
+                <ul class="z_pro">
+                    {% for product in cate_data_alls %}
+                        <li>
+                            <a href="#">
+                                <div class="img">
+                                    <div class="pic"><img src="{{ url_for('static',filename=product[2]) }}" /></div>
+                                    <div class="cont">
+                                        <h6>{{ product[1] }}</h6>
+                                        功能：<p>{{ product[3] }}</p>
+                                    </div>
+                                </div>
+                                <div class="title"><a href="#">{{ product[1] }}</a></div>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="page">
+                <a style="margin-left: 450px" href="{{ url_for('product',page=1)}}">首页</a>
+                <a style="margin: 0px 10px" href="{{ url_for('product',page=prev)}}">上一页</a>
+                {{ page }}
+                <a style="margin-left: 10px" href="{{ url_for('product',page=next)}}">下一页</a>
+                <a style="margin: 0px 10px" href="{{ url_for('product',page=pages)}}">末页</a>
+                总页数:{{ pages }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

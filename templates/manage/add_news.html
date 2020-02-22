@@ -1,0 +1,27 @@
+{% extends "manage/manage_base.html" %}
+{% block js %}
+	<script>
+		$(function () {
+			$(".navbar>ul>li:eq(4)").addClass("current");
+		});
+	</script>
+{% endblock %}
+{% block content %}
+    <h5> >>> 新增快讯</h5>
+    <form class="manage_form" action="/manage/add_news/">
+        <ul>
+            <li>
+                <label>快讯标题:</label>
+                <input type="text" name="title"/>
+            </li>
+            <li>
+                <label>快讯内容:</label>
+                <textarea rows="12" cols="38" name="content"></textarea>
+            </li>
+            <li class="reg_sub">
+                <br />
+                <input class="add" type="submit" value="添 加" name="mysubmit">
+            </li>
+        </ul>
+    </form>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="phone">
+        <img src="{{ url_for('static',filename='images/phone.jpg') }}" width="1300" height="300"/>
+        <div>
+            <a href="{{ url_for('index') }}">返回主页</a>
+        </div>
+    </div>
+{% endblock %}

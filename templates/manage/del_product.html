@@ -1,0 +1,35 @@
+{% extends "manage/manage_base.html" %}
+{% block js %}
+	<script>
+		$(function () {
+			$(".navbar>ul>li:eq(2)").addClass("current");
+		});
+	</script>
+{% endblock %}
+{% block content %}
+    <h5> >>> 删除产品</h5>
+    <table class="del_list">
+        <div class="page" style="position: absolute;top: 508px;">
+            <a style="margin-left: 180px" href="{{ url_for('manage_product_show',page=1) }}">首页</a>
+            <a style="margin: 0px 10px" href="{{ url_for('manage_product_show',page=prev) }}">上一页</a>
+            {{ page }}
+            <a style="margin-left: 10px" href="{{ url_for('manage_product_show',page=next) }}">下一页</a>
+            <a style="margin: 0px 10px" href="{{ url_for('manage_product_show',page=pages) }}">末页</a>
+            总页数:{{ pages }}
+        </div>
+        <tr>
+            <th>ID</th>
+            <th>产品名称</th>
+            <th>产品图片</th>
+        </tr>
+        {% for product in alls %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ product[1] }}</td>
+                <td><img src="{{ url_for('static',filename=product[2]) }}" width="30" height="30"/></td>
+                <td><a href="{{ url_for('update_product_info',product_id=product[0]) }}">修改</a></td>
+                <td><a class="del" href="{{ url_for('del_product',Cpage=page,product_name=product[1],product_work=product[3]) }}">删除</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

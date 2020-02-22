@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="contact">
+        <img src="{{ url_for('static',filename='images/map.jpg') }}" height="300" width="300"/>
+        <div>
+            <p>自兴医疗有限责任公司</p>
+            <p>地址：湖南省长沙市岳麓区麓谷街道麓谷信息港A座七楼</p>
+            <p>电话：<span>xxx-xxxx-xxxx</span></p>
+            <p>网址：www.CSMedcialNet.com</p>
+            <p>邮箱：CSMedcialNet@163.com</p>
+        </div>
+    </div>
+    <div class="return">
+        <a href="{{ url_for('index') }}">返回主页</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>长沙医疗网</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <script src="{{ url_for('static',filename='js/jquery-1.12.4.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/manage.js') }}"></script>
+    {% block js %}
+    {% endblock %}
+</head>
+<body>
+<div class="wrap">
+    <div class="navbar">
+        <ul>
+            <img src="{{ url_for('static',filename='images/logo.png') }}" height="50" width="170"/>
+            <li><a href="{{ url_for('manage_index') }}">后台管理--首页</a></li>
+            <li><a href="#">用户</a></li>
+            <li><a href="#">商品</a></li>
+            <li><a href="#">留言</a></li>
+            <li><a href="#">快讯</a></li>
+        </ul>
+    </div>
+    <span>管理员您好，欢迎回到管理后台。</span>
+</div>
+<div id="position">
+    您现在的位置：<a href="{{ url_for('manage_index') }}">长沙医疗网</a> &gt; 管理后台
+</div>
+<div class="wraps">
+    <div class="menu-mng">
+        <dl>
+            <dt>用户管理</dt>
+            <dd><em><a class="user" href="{{ url_for('manage_add_user') }}">新增</a></em>用户管理</dd>
+            <dd><em><a class="user" href="{{ url_for('user',page=1) }}">删除</a></em>用户管理</dd>
+            <dt>产品管理</dt>
+            <dd><em><a href="{{ url_for('manage_product') }}">新增</a></em>产品管理</dd>
+            <dd><em><a href="{{ url_for('manage_product_show',page=1) }}">删除</a></em>产品管理</dd>
+            <dt>留言管理</dt>
+            <dd><em><a href="{{ url_for('manage_guestbook_answer_show') }}">回复</a></em>留言管理</dd>
+            <dd><em><a href="{{ url_for('manage_guestbook_show',page=1) }}">删除</a></em>留言管理</dd>
+            <dt>快讯管理</dt>
+            <dd><em><a href="{{ url_for('manage_news') }}">新增</a></em>快讯管理</dd>
+            <dd><em><a href="{{ url_for('manage_work_news',page=1) }}">删除</a></em>快讯管理</dd>
+        </dl>
+    </div>
+    <div class="manage_main">
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+<div class="return">
+    <a href="{{ url_for('index') }}">返回前台页面</a>
+</div>
+<!--尾部部分-->
+<div class="footer">
+    <a href="{{ url_for('company') }}">关于我们</a>|<a href="#">开放平台</a>|<a href="{{ url_for('recruit') }}">人才招聘</a>|<a href="{{ url_for('contact') }}">联系我们</a>
+    <br />
+    长沙医疗网  版权所有 TEL：xxx-xxxx-xxxx
+    <br />
+    Copyright ©2018-0828 ChangSha Medicine Net Development Zi.Xing
+    <ul>
+        <li><strong>友情链接：</strong></li>
+        <li><a target="_blank" href="http://www.yixue.com/">医学百科</a></li>&nbsp;
+        <li><a target="_blank" href="http://www.gene123.com/">基因123</a></li>&nbsp;
+        <li><a target="_blank" href="http://www.cancer123.com/">癌症123</a></li>&nbsp;
+        <li><a target="_blank" href="http://www.med123.com/">医学导航</a></li>&nbsp;
+        <li><a target="_blank" href="http://www.we123.com/">微信小程序</a></li>&nbsp;
+        <li><a target="_blank" href="http://www.yiliao.com/">医疗网</a></li>&nbsp;
+        <li><a target="_blank" href="http://www.eyao.com/">医药网</a></li>&nbsp;
+        <li><a target="_blank" href="http://www.zhys.com/">中华养生网</a></li>
+    </ul>
+</div>
+</body>
+</html>

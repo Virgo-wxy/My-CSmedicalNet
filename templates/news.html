@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="news">
+        <div class="page" style="position: absolute;top: 620px;">
+            <a style="margin-left: 340px" href="{{ url_for('news',page=1)}}">首页</a>
+            <a style="margin: 0px 10px" href="{{ url_for('news',page=prev)}}">上一页</a>
+            {{ page }}
+            <a style="margin-left: 10px" href="{{ url_for('news',page=next)}}">下一页</a>
+            <a style="margin: 0px 10px" href="{{ url_for('news',page=pages)}}">末页</a>
+            总页数:{{ pages }}
+        </div>
+        <ul>
+            <h1>行业快讯</h1>
+            {% for news in cate_data_alls %}
+                <li class="title">
+                    <div class="title"> >>&nbsp;&nbsp;<a href="{{ url_for('work_news',Cpage=page,news_title=news[1],news_content=news[2],news_time=news[3]) }}">{{ news[1] }}</a></div>
+                    <div class="time">{{ news[3] }}</div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

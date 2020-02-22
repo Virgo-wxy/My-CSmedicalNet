@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block js %}
+    <script src="{{ url_for('static',filename='js/verify.js') }}"></script>
+{% endblock %}
+{% block content %}
+    <div class="register">
+        <div class="reg_title">
+            <h1>用户注册</h1>
+        </div>
+        <div class="reg_form">
+            <form action="/add_user/">
+                <ul>
+                    <li>
+                        <label>用户名:</label>
+                        <input type="text" name="user_name" id="user_name">
+                        <span>提示信息</span>
+                    </li>
+                    <li>
+                        <label>密码:</label>
+                        <input type="password" name="pwd" id="pwd">
+                        <span>提示信息</span>
+                    </li>
+                    <li>
+                        <label>确认密码:</label>
+                        <input type="password" name="cpwd" id="cpwd">
+                        <span>提示信息</span>
+                    </li>
+                    <li>
+                        <label>邮箱:</label>
+                        <input type="text" name="email" id="email">
+                        <span>提示信息</span>
+                    </li>
+                    <div id="mpanel1" style="margin:-10px 0px 10px 30px;"></div>
+                    <li class="agree">
+                        <input type="checkbox" name="allow" id="allow" checked="checked">
+                        <label>同意”长沙医疗网用户使用协议“</label>
+                        <span>提示信息</span>
+                    </li>
+                    <li class="reg_sub">
+                        <input type="submit" value="注 册" name="mysubmit" id="my_reg">
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+{% endblock %}

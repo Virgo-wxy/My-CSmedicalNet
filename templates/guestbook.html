@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="main">
+        <div id="reply-box">
+            <form action="/add_guestbook/">
+                <table>
+                    <br /><br />
+                    <tr>
+                        <td class="field">用户名：</td>
+                        <td><input class="text" type="text" name="guestName"/></td>
+                    </tr>
+                    <tr>
+                        <td class="field">留言内容：</td>
+                        <td><textarea name="guestContent"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><label class="ui-blue"><input type="submit" name="submit" value="提交留言" /></label></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="all">
+            <h2>全部留言</h2>
+            <div>
+                <ul>
+                    {% for guestbook in guestbook_infos %}
+                        <li>
+                            <dl>
+                                <dt>{{ guestbook[2] }}</dt>
+                                <dd class="author">网友：{{ guestbook[1] }} <span class="timer">{{ guestbook[4] }}</span></dd>
+                                <dd>{{ guestbook[3] }}</dd>
+                            </dl>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
